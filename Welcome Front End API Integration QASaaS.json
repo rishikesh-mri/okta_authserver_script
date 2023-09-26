@@ -1,0 +1,176 @@
+{
+    "AuthorizationServer": {
+        "InputObject": {
+            "Name": "Welcome Front End API Integration QASaaS",
+            "Audience": "mri:wfe:api",
+            "Description": null
+        },
+        "Scope": [
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": true
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:application",
+                    "Description": "Solely used to identify an MRI Application and will allow us to restrict the authorization to only select endpoints",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:federation",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:sfdc",
+                    "Description": "SFDC API access",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "openid",
+                    "Description": "Signals that a request is an OpenID request.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "profile",
+                    "Description": "Allows this application to access your profile information.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "email",
+                    "Description": "Allows this application to access your email address.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "address",
+                    "Description": "Allows this application to access your address.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "phone",
+                    "Description": "Allows this application to access your phone number.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "offline_access",
+                    "Description": "Allows this application to access your data when you aren't using the application.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "device_sso",
+                    "Description": "This allows you to single sign on between native client applications on your device.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            }
+        ],
+        "Policy": [
+            {
+                "InputObject": {
+                    "Name": "Client Credentials Only",
+                    "Description": "Client Credentials Only",
+                    "Priority": 1,
+                    "Client": [
+                        "Welcome Int FF",
+                        "Application Gateway API QASaaS"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "Client Credentials Only",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "openid",
+                            "profile",
+                            "email",
+                            "address",
+                            "phone",
+                            "offline_access",
+                            "mri:wfe:api:sfdc",
+                            "mri:wfe:api"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "AG Federation",
+                    "Description": "access federation scope",
+                    "Priority": 2,
+                    "Client": [
+                        "AG Federation API"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "access federation scope",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api",
+                            "mri:wfe:api:federation"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "MRI Application",
+                    "Description": "MRI Application",
+                    "Priority": 3,
+                    "Client": [
+                        "ALL_CLIENTS"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "MRI Application",
+                        "GrantTypes": [
+                            "authorization_code"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api:application"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

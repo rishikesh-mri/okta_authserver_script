@@ -1,0 +1,185 @@
+{
+    "AuthorizationServer": {
+        "InputObject": {
+            "Name": "Welcome Front End API REDMZ FF",
+            "Audience": "mri:wfe:api",
+            "Description": null
+        },
+        "Scope": [
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": true
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:application",
+                    "Description": "Solely used to identify an MRI Application and will allow us to restrict the authorization to only select endpoints",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:federation",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:sfdc",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "openid",
+                    "Description": "Signals that a request is an OpenID request.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "profile",
+                    "Description": "The exact data varies based on what profile information you have provided, such as: name, time zone, picture, or birthday.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "email",
+                    "Description": "This allows the app to view your email address.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "address",
+                    "Description": "This allows the app to view your address, such as: street address, city, state, and zip code.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "phone",
+                    "Description": "This allows the app to view your phone number.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "offline_access",
+                    "Description": "This keeps you signed in to the app, even when you are not using it.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "device_sso",
+                    "Description": "This allows you to single sign on between native client applications on your device.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            }
+        ],
+        "Policy": [
+            {
+                "InputObject": {
+                    "Name": "Client Credentials Only",
+                    "Description": "Allow API Calls",
+                    "Priority": 1,
+                    "Client": [
+                        "Salesforce",
+                        "Welcome Licensing QA",
+                        "Welcome Licensing Dev",
+                        "Application Gateway API QASaaS",
+                        "Application Gateway API Dev",
+                        "Welcome FF REDMZ",
+                        "Application Gateway API FF"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "Client Credentials",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api:application",
+                            "openid",
+                            "profile",
+                            "email",
+                            "address",
+                            "phone",
+                            "offline_access",
+                            "mri:wfe:api:sfdc",
+                            "mri:wfe:api"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "Federation Scope",
+                    "Description": "Access to federation scope",
+                    "Priority": 2,
+                    "Client": [
+                        "Application Gateway API Dev",
+                        "AG Federation API",
+                        "Salesforce"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "Access federation scope",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api",
+                            "mri:wfe:api:federation",
+                            "mri:wfe:api:sfdc"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "MRI Application",
+                    "Description": "MRI Application",
+                    "Priority": 3,
+                    "Client": [
+                        "ALL_CLIENTS"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "MRI Application",
+                        "GrantTypes": [
+                            "authorization_code"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api:application"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,201 @@
+{
+    "AuthorizationServer": {
+        "InputObject": {
+            "Name": "Welcome Front End API REDMZ-release",
+            "Audience": "mri:wfe:api",
+            "Description": null
+        },
+        "Scope": [
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api",
+                    "Description": null,
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": true
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:application",
+                    "Description": "Solely used to identify an MRI Application and will allow us to restrict the authorization to only select endpoints",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:federation",
+                    "Description": "Access federation information",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "mri:wfe:api:sfdc",
+                    "Description": "mri:wfe:api:sfdc",
+                    "MetadataPublish": "NO_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "openid",
+                    "Description": "Signals that a request is an OpenID request.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "profile",
+                    "Description": "Allows this application to access your profile information.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "email",
+                    "Description": "Allows this application to access your email address.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "address",
+                    "Description": "Allows this application to access your address.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "phone",
+                    "Description": "Allows this application to access your phone number.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "offline_access",
+                    "Description": "Allows this application to access your data when you aren't using the application.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            },
+            {
+                "InputObject": {
+                    "Name": "device_sso",
+                    "Description": "This allows you to single sign on between native client applications on your device.",
+                    "MetadataPublish": "ALL_CLIENTS",
+                    "DefaultScope": false
+                }
+            }
+        ],
+        "Policy": [
+            {
+                "InputObject": {
+                    "Name": "AG ONLY",
+                    "Description": "Client Credentials Only",
+                    "Priority": 1,
+                    "Client": [
+                        "Application Gateway API REDMZ"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "Client Credentials Only",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "Other callers",
+                    "Description": "Restricts access",
+                    "Priority": 2,
+                    "Client": [
+                        "Salesforce",
+                        "Welcome Licensing QA",
+                        "Property Central QA - CMS",
+                        "Horizon Dev",
+                        "ProductDevelopment",
+                        "MRI Property Central - Beta",
+                        "Sales and Lettings (Dev)",
+                        "Welcome Licensing Dev",
+                        "MRI Property Central - QA",
+                        "AG Federation API",
+                        "Engage Portal DEVOPS dev/QA",
+                        "MRI Repairs Web Portal (DEV)"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "external callers",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api:federation",
+                            "mri:wfe:api:sfdc"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "client policies",
+                    "Description": "policy for clients that need to get and set Okta group policies",
+                    "Priority": 3,
+                    "Client": [
+                        "MRI Angus API"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "TBD policy scope",
+                        "GrantTypes": [
+                            "client_credentials"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api"
+                        ]
+                    }
+                ]
+            },
+            {
+                "InputObject": {
+                    "Name": "MRI Application",
+                    "Description": "MRI Application",
+                    "Priority": 4,
+                    "Client": [
+                        "ALL_CLIENTS"
+                    ]
+                },
+                "Rule": [
+                    {
+                        "Name": "MRI Application",
+                        "GrantTypes": [
+                            "authorization_code"
+                        ],
+                        "Priority": 1,
+                        "Scopes": [
+                            "mri:wfe:api:application"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
