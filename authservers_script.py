@@ -92,6 +92,7 @@ for policy in response_dict:
     rules = []
     rulesFetch = requests.get("{}/authorizationServers/{}/policies/{}/rules".format(OKTA_API_BASEURL, okta_client_id, policy['id']), headers={"Authorization": "SSWS {}".format(OKTA_API_TOKEN)})
     rulesResponse = json.loads(rulesFetch.text)
+    # fetch rules per policy
     for rule in rulesResponse:
         new_rules_obj = copy.deepcopy(rule_obj)
         new_rules_obj["Name"] = rule['name']
@@ -102,6 +103,6 @@ for policy in response_dict:
     new_policy_obj['Rule'] = rules
     authserver_obj["AuthorizationServer"]["Policy"].append(new_policy_obj)
 
+# save json structure to file
 with open("{}.json".format(authserver_obj["AuthorizationServer"]["InputObject"]["Name"]), "w") as file:
     json.dump(authserver_obj, file, indent=4)
-# Fetch rules per policy
