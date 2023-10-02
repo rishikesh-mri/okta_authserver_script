@@ -124,7 +124,7 @@
                     "Description": "MRI Application",
                     "Priority": 4,
                     "Client": [
-                        "ALL_CLIENTS"
+                        "PMX Mobile Service"
                     ]
                 },
                 "Rule": [
