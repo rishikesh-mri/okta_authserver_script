@@ -1,0 +1,27 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway REDMZ",
+            "RedirectUri": [
+                "https://agweb-release.redmz.mrisoftware.com/redirect.html",
+                "https://agweb-dev.redmz.mrisoftware.com/redirect.html",
+                "https://dev-agweb-dev.redmz.mrisoftware.com/redirect.html",
+                "https://qa-agweb-dev.redmz.mrisoftware.com/redirect.html",
+                "https://qa-agweb-rel.redmz.mrisoftware.com/redirect.html",
+                "https://localhost:4200/redirect.html",
+                "https://*.mrisoftware.com/redirect.html",
+                "http://localhost:3333/redirect.html",
+                "https://www.getpostman.com/oauth2/callback",
+                "http://localhost:4200/redirect.html"
+            ],
+            "LogoutUri": []
+        },
+        "Group": [
+            "FAAINGR",
+            "mimicSupport",
+            "H000001",
+            "Everyone"
+        ]
+    }
+}

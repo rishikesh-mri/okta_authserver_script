@@ -1,0 +1,20 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway Home REDMZ",
+            "RedirectUri": [
+                "https://welcome-release.redmz.mrisoftware.com/OpenIdConnect/Redirect"
+            ],
+            "LogoutUri": [
+                "https://welcome-release.redmz.mrisoftware.com/OpenIdConnect/PostLogoutRedirect"
+            ]
+        },
+        "Group": [
+            "Everyone",
+            "mimicSupport",
+            "P123456",
+            "MRIQWEB"
+        ]
+    }
+}

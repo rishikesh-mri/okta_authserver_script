@@ -1,0 +1,11 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "test",
+            "RedirectUri": [],
+            "LogoutUri": []
+        },
+        "Group": []
+    }
+}

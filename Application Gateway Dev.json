@@ -1,0 +1,26 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway Dev",
+            "RedirectUri": [
+                "http://localhost:8080/redirect.html",
+                "http://agweb.local.mrisoftware.net/redirect.html",
+                "http://agweb.local.mrisoftware.net:81/redirect.html",
+                "https://agweb.local.mrisoftware.net/redirect.html",
+                "https://agweb.local.mrisoftware.net:81/redirect.html",
+                "http://agweb.local.mrisoftware.net:8080/redirect.html",
+                "https://agweb.local.mrisoftware.net:8080/redirect.html",
+                "https://localhost:3333/redirect.html",
+                "https://*.mrisoftware.net/redirect.html",
+                "http://localhost:4200/redirect.html"
+            ],
+            "LogoutUri": []
+        },
+        "Group": [
+            "sg.MRISaaS.AGAdmin",
+            "ApplicationStudioDevs",
+            "mimicSupport"
+        ]
+    }
+}

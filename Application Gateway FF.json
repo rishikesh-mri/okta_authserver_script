@@ -1,0 +1,23 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway FF",
+            "RedirectUri": [
+                "https://agweb-wfeint.ff.mrisoftware.net/redirect.html",
+                "https://agweb-wfetrunk.ff.mrisoftware.net/redirect.html",
+                "https://agweb.local.mrisoftware.net/redirect.html",
+                "https://agweb.local.mrisoftware.net:81/redirect.html",
+                "https://agweb.local.mrisoftware.net:8080/redirect.html",
+                "https://localhost:8080/redirect.html"
+            ],
+            "LogoutUri": []
+        },
+        "Group": [
+            "mimicSupport",
+            "ApplicationStudioDevs",
+            "MRIQWE8",
+            "sg.MRISaaS.AGAdmin"
+        ]
+    }
+}
