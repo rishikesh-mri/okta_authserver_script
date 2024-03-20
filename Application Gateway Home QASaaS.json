@@ -1,0 +1,21 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway Home QASaaS",
+            "RedirectUri": [
+                "https://welcome-dev.redmz.mrisoftware.com/OpenIdConnect/Redirect",
+                "https://*.mrisoftware.com/redirect.html",
+                "https://*.redmz.mrisoftware.com/redirect.html"
+            ],
+            "LogoutUri": [
+                "https://welcome-dev.redmz.mrisoftware.com/OpenIdConnect/PostLogoutRedirect"
+            ]
+        },
+        "Group": [
+            "P123456",
+            "MRIQWEB",
+            "mimicSupport"
+        ]
+    }
+}

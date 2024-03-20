@@ -1,0 +1,19 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway QASaaS",
+            "RedirectUri": [
+                "https://agweb-wfeint.qasaas.mrisoftware.net/redirect.html",
+                "https://agweb-wfetrunk.qasaas.mrisoftware.net/redirect.html",
+                "https://agweb-wfelegacy.qasaas.mrisoftware.net/redirect.html"
+            ],
+            "LogoutUri": []
+        },
+        "Group": [
+            "mimicSupport",
+            "sg.MRISaaS.AGAdmin",
+            "ApplicationStudioDevs"
+        ]
+    }
+}

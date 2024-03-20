@@ -1,0 +1,23 @@
+{
+    "Application": {
+        "Type": "Spa",
+        "InputObject": {
+            "Label": "Application Gateway Administration FF",
+            "RedirectUri": [
+                "https://localhost:44300/OpenIdConnect/Redirect",
+                "https://localhost:4200/silent-refresh.html",
+                "https://welcome-ff.redmz.mrisoftware.com/OpenIdConnect/Redirect"
+            ],
+            "LogoutUri": [
+                "https://localhost:44300/OpenIdConnect/PostLogoutRedirect",
+                "https://welcome-ff.redmz.mrisoftware.com/OpenIdConnect/PostLogoutRedirect"
+            ]
+        },
+        "Group": [
+            "MRIQWEB",
+            "P123456",
+            "sg.MRISaaS.AGAdmin",
+            "mimicSupport"
+        ]
+    }
+}
